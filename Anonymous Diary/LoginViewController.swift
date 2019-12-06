@@ -20,8 +20,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.title = "로그인"
-        
         if Auth.auth().currentUser != nil {
             txtEmail.placeholder = "이미 로그인된 상태입니다."
             txtPassWord.placeholder = "이미 로그인된 상태입니다."
@@ -33,6 +31,7 @@ class LoginViewController: UIViewController {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             self.navigationController?.title = user?.email
         }
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

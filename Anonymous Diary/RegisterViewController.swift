@@ -44,9 +44,9 @@ class RegisterViewController: UIViewController {
                     print("register success")
                     let ref = Database.database().reference()
 //                    ref.child("user/email").setValue(email)
-                    ref.child("user").child(email).child("name").setValue(name)
-//                    ref.child("test/\(email)/username").setValue(name)
-//                    ref.child("test/\(email)/password").setValue(password)
+                    ref.child("user/email").setValue(email)
+                    ref.child("user/username").setValue(name)
+                    ref.child("user/password").setValue(password)
                     
                     self.navigationController?.popViewController(animated: true)
                 } else {
