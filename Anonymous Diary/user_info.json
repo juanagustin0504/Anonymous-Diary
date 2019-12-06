@@ -1,12 +1,7 @@
-/* 
-  user_info.json
-  Anonymous Diary
-
-  Created by Webcash on 2019/12/06.
-  Copyright © 2019 Moon. All rights reserved.
-*/
 {
     "user" : {
-        "
+        "email" : "abc@email.com",
+        "name"  : "홍길동",
+        "password" : "000000"
     }
 }

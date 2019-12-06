@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         
         self.navigationController?.title = "로그인"
         
-        if let user = Auth.auth().currentUser {
+        if Auth.auth().currentUser != nil {
             txtEmail.placeholder = "이미 로그인된 상태입니다."
             txtPassWord.placeholder = "이미 로그인된 상태입니다."
             btnLogin.setTitle("이미 로그인된 상태입니다.", for: .normal)

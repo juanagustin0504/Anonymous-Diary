@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
 
@@ -16,12 +17,12 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtConfirmPassword: UITextField!
     
-    
     @IBOutlet weak var swAgree: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.title = "회원가입"
         
     }
@@ -41,12 +42,17 @@ class RegisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
                     print("register success")
+                    let ref = Database.database().reference()
+//                    ref.child("user/email").setValue(email)
+                    ref.child("user").child(email).child("name").setValue(name)
+//                    ref.child("test/\(email)/username").setValue(name)
+//                    ref.child("test/\(email)/password").setValue(password)
+                    
+                    self.navigationController?.popViewController(animated: true)
                 } else {
                     print("register failed")
                 }
             })
-            
-            var ref = Database.database().reference()
             
         }
     }
